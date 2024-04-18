@@ -24,6 +24,8 @@ def objective(weights, qualities, human_scores):
 
 initial_weights = np.ones(3) / 3
 
+print(initial_weights)
+
 # Constraints: The weights should sum up to 1
 constraints = [{'type': 'eq', 'fun': lambda w: np.sum(w) - 1}]
 
