@@ -3,17 +3,17 @@ from scipy.optimize import minimize
 
 import pandas as pd
 
-df = pd.read_excel('data/optimization_scores_all.xlsx')
+df = pd.read_excel('data/optimization_scores_300.xlsx')
 
 A = df['A'].tolist()
 I = df['I'].tolist()
 E = df['E'].tolist()
-X = df['X'].tolist()
+H = df['H'].tolist()
 
 qualities = np.array([A,  # Quality 1
                       I,  # Quality 2
                       E])  # Quality 3
-human_scores = np.array(X)
+human_scores = np.array(H)
 
 
 # Objective function to minimize (Mean Squared Error)
@@ -24,7 +24,7 @@ def objective(weights, qualities, human_scores):
 
 initial_weights = np.ones(3) / 3
 
-print(initial_weights)
+print('initial weights :',initial_weights)
 
 # Constraints: The weights should sum up to 1
 constraints = [{'type': 'eq', 'fun': lambda w: np.sum(w) - 1}]
